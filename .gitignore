@@ -1,1 +1,25 @@
-.local
+# Environment files
+.env
+*.env
+
+# Secrets
+secrets/
+*.secret
+
+# Podman files
+podman-secrets/
+
+# IDE files
+.idea/
+.vscode/
+
+# Node modules
+node_modules/
+
+# Logs
+logs/
+*.log
+
+# Database files
+*.db
+*.sqlite
