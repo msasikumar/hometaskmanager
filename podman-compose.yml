@@ -1,0 +1,23 @@
+version: '3.8'
+services:
+  taskdb:
+    image: mariadb:10.11
+    container_name: taskdb
+    environment:
+      MYSQL_ROOT_PASSWORD: averysecurepassword
+      MYSQL_DATABASE: taskmanager
+    ports:
+      - "3306:3306"
+    volumes:
+      - ./mariadb-nossl.cnf:/etc/mysql/conf.d/nossl.cnf
+
+  dynamic_app:
+    image: dynamic_app:no_ssl
+    container_name: dynamic_app
+    environment:
+      DB_HOST: taskdb
+      DB_PASSWORD: averysecurepassword
+    ports:
+      - "3000:3000"
+    depends_on:
+      - taskdb
